@@ -1,0 +1,32 @@
+class aplikasi():
+    def init(self, informasi_saldo, setor_saldo, tarik_saldo, keluar):
+        self.informasi_saldo = informasi_saldo
+        self.setor_saldo = setor_saldo
+        self.tarik_saldo = tarik_saldo
+        self.keluar = keluar
+
+    def atm(self):
+        print("Selamat Datang pada Pencatatan Uang Digital!")
+        print("==============================================")
+        print("========= SILAHKAN INPUT PILIHAN ANDA ========")
+        print("1. Cek Informasi Saldo!")
+        print("2. Setor Saldo!")
+        print("3. Tarik Saldo")
+        print("4. Keluar")
+        print("==============================================")
+
+    def informasi(self):
+        pilihan = int(input("Silahkan pilih menu : "))
+        if pilihan == 1:
+            print("")
+            print("Sisa Saldo anda adalah Rp.", ['0'])
+            print("")
+            print("")
+            
+
+
+data1 = aplikasi()
+data1.atm()
+
+data2= aplikasi()
+data2.informasi()

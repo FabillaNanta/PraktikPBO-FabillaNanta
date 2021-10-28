@@ -1,32 +1,95 @@
-class aplikasi():
-    def init(self, informasi_saldo, setor_saldo, tarik_saldo, keluar):
-        self.informasi_saldo = informasi_saldo
-        self.setor_saldo = setor_saldo
-        self.tarik_saldo = tarik_saldo
-        self.keluar = keluar
+# Fabilla Nanta (2010030)
 
-    def atm(self):
-        print("Selamat Datang pada Pencatatan Uang Digital!")
-        print("==============================================")
-        print("========= SILAHKAN INPUT PILIHAN ANDA ========")
-        print("1. Cek Informasi Saldo!")
-        print("2. Setor Saldo!")
-        print("3. Tarik Saldo")
-        print("4. Keluar")
-        print("==============================================")
+saldo = 0
+saldo_tabungan = 100000
 
-    def informasi(self):
-        pilihan = int(input("Silahkan pilih menu : "))
-        if pilihan == 1:
-            print("")
-            print("Sisa Saldo anda adalah Rp.", ['0'])
-            print("")
-            print("")
-            
+def cek():
+    print("Saldo umum anda tersisa Rp.%d" % saldo)
+    print("Saldo tabungan anda tersisa Rp.%d" % saldo_tabungan)
+
+def tarik_umum(jumlah_tarik):
+    global saldo
+
+    jumlah_tarik = int(input("Silahkan input nominal yang anda ingin tarik: "))
+    if jumlah_tarik >= saldo:
+        print("Pengambilan saldo tidak dapat dilakukan!")
+        saldo = saldo
+    else:
+        saldo = saldo - jumlah_tarik
+        print("Pengambilan saldo sebesar Rp.%d,- berhasil!" % jumlah_tarik)
+
+def setor_umum(jumlah_setor):
+    global saldo
+
+    jumlah_setor = int(input("Nominal uang yang akan ditambahkan: "))
+    if jumlah_setor <= 0:
+        print("Penambahan saldo tidak dapat dilakukan!")
+        saldo = saldo
+    else:
+        saldo = saldo + jumlah_setor
+        print("Berhasil menambahan saldo sebesar Rp.%d !" % jumlah_setor)
+        print("Jumlah saldo umum anda sekarang: Rp. %d" %saldo)
+        saldo_tabungan + saldo
+        print("jumlah saldo tabungan anda: Rp. %d" % saldo_tabungan)
+
+def tarik_tabungan(jumlah_tarik_tabungan):
+    global saldo_tabungan
+
+    jumlah_tarik_tabungan = int(input("Silahkan input nominal yang anda ingin tarik: "))
+    if jumlah_tarik_tabungan >= saldo_tabungan:
+        print("Pengambilan saldo tidak dapat dilakukan!")
+        saldo_tabungan = saldo_tabungan
+    else:
+        saldo_tabungan = saldo_tabungan - jumlah_tarik_tabungan
+        print("Pengambilan saldo sebesar Rp.%d,- berhasil!" % jumlah_tarik_tabungan)
+        print("Saldo tabungan anda tersisa Rp.%d" % saldo_tabungan)
 
 
-data1 = aplikasi()
-data1.atm()
+def setor_tabungan(jumlah_setor_tabungan):
+    global saldo_tabungan
 
-data2= aplikasi()
-data2.informasi()
+    jumlah_setor_tabungan = int(input("Nominal uang yang akan ditambahkan: "))
+    if jumlah_setor_tabungan <= 0:
+        print("Penambahan saldo tidak dapat dilakukan!")
+        saldo_tabungan = saldo_tabungan
+    else:
+        saldo_tabungan = saldo_tabungan + jumlah_setor_tabungan
+        print("Berhasil menambahan saldo sebesar Rp.%d!" % jumlah_setor_tabungan)
+        print("Jumlah saldo umum anda sekarang: Rp. %d" %saldo)
+        print("jumlah saldo tabungan anda: Rp. %d" % saldo_tabungan)
+
+
+pilihan = None
+jumlah = None
+while True:
+    print("======================================================")
+    print("Selamat Datang Fabilla pada Aplikasi Pencatatan Uang Digital!")
+    print("1. Cek Saldoku!")
+    print("2. Tarik Saldo")
+    print("3. Setor Saldo")
+    print("4. Keluar")
+    print("======================================================")
+    pilihan = int(input("Silahkan input pilihan: "))
+    if pilihan == 1:
+        cek()
+    elif pilihan == 2:
+        print("Silahkan memilih tempat penyimpanan:")
+        print("[1] Saldo Umum")
+        print("[2] Saldo Tabungan")
+        storage = int(input("Silahkan input pilihan: "))
+        if storage == 1:
+            tarik_umum(jumlah)
+        else:
+            tarik_tabungan(jumlah) 
+    elif pilihan == 3:
+        print("Silahkan memilih tempat penyimpanan:")
+        print("[1] Saldo Umum")
+        print("[2] Saldo Tabungan")
+        storage = int(input("Silahkan input pilihan: "))
+        if storage == 1:
+            setor_umum(jumlah)
+        else:
+            setor_tabungan(jumlah)
+    elif pilihan == 4:
+        print("Terimakasih sudah menggunakan aplikasi ini, selamat tinggal Fabilla!")
+        exit()
